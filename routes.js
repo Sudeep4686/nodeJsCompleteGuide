@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const requestHandler = ()=>{
+const requestHandler = (req,res)=>{
     const url = req.url;
     const method =  req.method;
 
@@ -15,9 +15,8 @@ const requestHandler = ()=>{
             res.write(`<body><form action="/message" method="POST"><input type="text" name="message"><button type="submit">Send</button></form></body>`);
             res.write(`</html>`)
             return res.end();
-        })
-    
-       
+        });
+
     }
     else if (url==='/message' && method ==='POST'){
         const body = [];
@@ -49,7 +48,7 @@ const requestHandler = ()=>{
     }
 }
 
-// module.exports = requestHandler;
+module.exports = requestHandler;
 
 // module.exports = {
 //     handler: requestHandler,
@@ -57,6 +56,6 @@ const requestHandler = ()=>{
 // }
 
 
-module.exports.handler = requestHandler;
-module.exports.someText="some text"
+// module.exports.handler = requestHandler;
+// module.exports.someText="some text"
 
